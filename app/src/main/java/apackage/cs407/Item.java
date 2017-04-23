@@ -1,5 +1,7 @@
 package apackage.cs407;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by SlabberZ on 4/18/2017.
  */
@@ -11,14 +13,16 @@ public class Item {
     private boolean pickup;
     private int maxUses;
     private int score;
+    private int pic;
 
-    public Item(String name, int numUses, String description, boolean pickup, int score) {
+    public Item(String name, int numUses, String description, boolean pickup, int score, int pic) {
         this.name = name;
         this.numUses = numUses;
         this.maxUses = numUses;
         this.description = description;
         this.pickup = pickup;
         this.score = score;
+        this.pic = pic;
     }
 
     public String getName() {
@@ -39,6 +43,10 @@ public class Item {
 
     public boolean getPickup() {
         return pickup;
+    }
+
+    public int getPic() {
+        return pic;
     }
 
     public boolean useItem() {

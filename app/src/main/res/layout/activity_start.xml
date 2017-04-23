@@ -34,11 +34,21 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/inventoryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
+        android:src="@mipmap/backpack"
+         />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/currentItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_above="@id/inventoryButton"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@mipmap/ic_launcher" />
 
 </android.support.design.widget.CoordinatorLayout>

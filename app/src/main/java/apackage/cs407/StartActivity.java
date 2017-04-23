@@ -1,5 +1,6 @@
 package apackage.cs407;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -16,7 +17,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class StartActivity extends AppCompatActivity {
 
@@ -34,6 +39,8 @@ public class StartActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    private int first = 0;
+    private FloatingActionButton currItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,15 +58,66 @@ public class StartActivity extends AppCompatActivity {
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.inventoryButton);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+                startActivity(new Intent(StartActivity.this, Inventory.class));
+            }
+
+
+        });
+
+        final ArrayList<Item> items = new ArrayList<>();
+
+        Item wrench = new Item("Wrench", 10, "This can be used to whack things or on bolts.", true, 50, R.mipmap.wrench2);
+        Item hammer = new Item("Hammer", 5, "This can also whack things, especially nails or zombies", true, 25, R.mipmap.hammer);
+        Item soda = new Item("Soda", 1, "I'm thirsty", true, 100, R.mipmap.soda);
+
+        items.add(wrench);
+        items.add(hammer);
+        items.add(soda);
+
+        ((GlobalApp) this.getApplication()).setInventory(items);
+
+        currItem = (FloatingActionButton) findViewById(R.id.currentItem);
+        Item item = ((GlobalApp) this.getApplication()).getItem();
+        if(item == null) {
+            currItem.setImageResource(R.mipmap.ic_launcher);
+        } else {
+            currItem.setImageResource(item.getPic());
+        }
+
+
+        currItem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Item curr = ((GlobalApp) getApplication()).getItem();
+                if(first == 0) {
+                    Item pencil = new Item("Pencil", 25, "Draw with it", true, 1, R.mipmap.pencil);
+                    items.add(pencil);
+                    first++;
+                }
+                Toast.makeText(StartActivity.this, curr.getName(), Toast.LENGTH_LONG).show();
             }
         });
 
+
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        //Do your code here
+        Item item = ((GlobalApp) this.getApplication()).getItem();
+        if(item == null) {
+            currItem.setImageResource(R.mipmap.ic_launcher);
+        } else {
+            currItem.setImageResource(item.getPic());
+        }
     }
 
 
