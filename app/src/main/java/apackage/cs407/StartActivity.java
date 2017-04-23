@@ -57,19 +57,20 @@ public class StartActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        final ArrayList<Item> items = new ArrayList<>();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.inventoryButton);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ((GlobalApp) getApplication()).setInventory(items);
+
                 startActivity(new Intent(StartActivity.this, Inventory.class));
             }
 
 
         });
-
-        final ArrayList<Item> items = new ArrayList<>();
 
         Item wrench = new Item("Wrench", 10, "This can be used to whack things or on bolts.", true, 50, R.mipmap.wrench2);
         Item hammer = new Item("Hammer", 5, "This can also whack things, especially nails or zombies", true, 25, R.mipmap.hammer);
@@ -85,8 +86,6 @@ public class StartActivity extends AppCompatActivity {
         Item item = ((GlobalApp) this.getApplication()).getItem();
         if(item == null) {
             currItem.setImageResource(R.mipmap.ic_launcher);
-        } else {
-            currItem.setImageResource(item.getPic());
         }
 
 
