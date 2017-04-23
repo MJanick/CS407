@@ -98,7 +98,9 @@ public class StartActivity extends AppCompatActivity {
                     items.add(pencil);
                     first++;
                 }
-                Toast.makeText(StartActivity.this, curr.getName(), Toast.LENGTH_LONG).show();
+                if(curr != null) {
+                    Toast.makeText(StartActivity.this, curr.getName(), Toast.LENGTH_LONG).show();
+                }
             }
         });
 
