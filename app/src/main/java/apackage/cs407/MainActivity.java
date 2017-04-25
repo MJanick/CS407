@@ -13,6 +13,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        DBManager dbManager = new DBManager(this, null, null, 1);
+        ((GlobalApp) getApplication()).setDB(dbManager);
+
         Button startButton = (Button)findViewById(R.id.startButton);
 
         startButton.setOnClickListener(new View.OnClickListener() {

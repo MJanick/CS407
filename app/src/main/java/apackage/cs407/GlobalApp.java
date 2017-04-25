@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class GlobalApp extends Application {
     private ArrayList<Item> currInventory;
     private Item currItem;
+    private DBManager dbman;
 
     public ArrayList<Item> getInventory() {
         return currInventory;
@@ -26,5 +27,13 @@ public class GlobalApp extends Application {
 
     public void setItem(Item item) {
         this.currItem = item;
+    }
+
+    public DBManager getDB() {
+        return dbman;
+    }
+
+    public void setDB(DBManager dbman) {
+        this.dbman = dbman;
     }
 }

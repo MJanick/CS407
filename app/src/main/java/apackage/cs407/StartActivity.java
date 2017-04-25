@@ -92,6 +92,8 @@ public class StartActivity extends AppCompatActivity {
         currItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(StartActivity.this, ResultsName.class));
+
                 Item curr = ((GlobalApp) getApplication()).getItem();
                 if(first == 0) {
                     Item pencil = new Item("Pencil", 25, "Draw with it", true, 1, R.mipmap.pencil);
