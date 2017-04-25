@@ -12,11 +12,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 class CustomAdapter extends ArrayAdapter<Item> {
-    // int[] imgs;
 
     CustomAdapter(Context context, ArrayList<Item> items) {
         super(context, R.layout.custom_row, items);
-        //imgs = pics;
     }
 
     @Override
