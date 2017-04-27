@@ -12,6 +12,7 @@ public class GlobalApp extends Application {
     private ArrayList<Item> currInventory;
     private Item currItem;
     private DBManager dbman;
+    private static Item viewItem = null;
 
     public ArrayList<Item> getInventory() {
         return currInventory;
@@ -28,6 +29,10 @@ public class GlobalApp extends Application {
     public void setItem(Item item) {
         this.currItem = item;
     }
+
+    public static Item getViewItem() {return viewItem;}
+
+    public void setViewItem(Item item) {this.viewItem = item; }
 
     public DBManager getDB() {
         return dbman;

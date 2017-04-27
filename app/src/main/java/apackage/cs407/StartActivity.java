@@ -72,9 +72,9 @@ public class StartActivity extends AppCompatActivity {
 
         });
 
-        Item wrench = new Item("Wrench", 10, "This can be used to whack things or on bolts.", true, 50, R.mipmap.wrench2);
-        Item hammer = new Item("Hammer", 5, "This can also whack things, especially nails or zombies", true, 25, R.mipmap.hammer);
-        Item soda = new Item("Soda", 1, "I'm thirsty", true, 100, R.mipmap.soda);
+        Item wrench = new Item("Wrench", 10, "This can be used to whack things or on bolts.", true, 50, R.mipmap.wrench2, "");
+        Item hammer = new Item("Hammer", 5, "This can also whack things, especially nails or zombies", true, 25, R.mipmap.hammer, "");
+        Item soda = new Item("Soda", 1, "I'm thirsty", true, 100, R.mipmap.soda, "");
 
         items.add(wrench);
         items.add(hammer);
@@ -96,7 +96,7 @@ public class StartActivity extends AppCompatActivity {
 
                 Item curr = ((GlobalApp) getApplication()).getItem();
                 if(first == 0) {
-                    Item pencil = new Item("Pencil", 25, "Draw with it", true, 1, R.mipmap.pencil);
+                    Item pencil = new Item("Pencil", 25, "Draw with it", true, 1, R.mipmap.pencil, "");
                     items.add(pencil);
                     first++;
                 }
@@ -105,6 +105,20 @@ public class StartActivity extends AppCompatActivity {
                 }
             }
         });
+
+        FloatingActionButton doorButton = (FloatingActionButton) findViewById(R.id.door);
+        doorButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Item door = new Item("Door", 100, "", false, 0, R.mipmap.ic_launcher, "An unlocked door to another room.");
+                door.addAction(new Enter());
+                Item curr = ((GlobalApp) getApplication()).getItem();
+                if (curr != null && curr.getName().equals("Wrench")) door.addAction(new TextOnly("Smack door with wrench", "No luck."));
+                ((GlobalApp) getApplication()).setViewItem(door);
+
+                startActivity(new Intent(StartActivity.this, ItemView.class));
+            }});
+
 
 
 
