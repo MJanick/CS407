@@ -111,9 +111,9 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Item door = new Item("Door", 100, "", false, 0, R.mipmap.ic_launcher, "An unlocked door to another room.");
-                door.addAction(new Enter());
+                door.addAction(new Enter(false, new Intent(StartActivity.this, LeaderboardActivity.class)));
                 Item curr = ((GlobalApp) getApplication()).getItem();
-                if (curr != null && curr.getName().equals("Wrench")) door.addAction(new TextOnly("Smack door with wrench", "No luck."));
+                if (curr != null && curr.getName().equals("Wrench")) door.addAction(new TextOnly("Smack door with wrench", "Didn't do anything."));
                 ((GlobalApp) getApplication()).setViewItem(door);
 
                 startActivity(new Intent(StartActivity.this, ItemView.class));

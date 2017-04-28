@@ -1,5 +1,7 @@
 package apackage.cs407;
 
+import android.content.Context;
+import android.content.Intent;
 import android.widget.Toast;
 
 /**
@@ -8,7 +10,7 @@ import android.widget.Toast;
 
 abstract class Action {
     public abstract String getName();
-    public abstract void executeAction();
+    public abstract void executeAction(Context context);
 }
 
 class Examine extends Action {
@@ -23,29 +25,34 @@ class Examine extends Action {
         return name;
     }
 
-    public void executeAction() {
-        //Should cause the app to display the "examineResult" field from the viewItem from GlobalApp
+    public void executeAction(Context context) {
+        Toast.makeText(context, GlobalApp.getViewItem().examineResult, Toast.LENGTH_LONG).show();
     }
 }
 
 class Enter extends Action {
     protected String name;
     protected int time;
+    protected boolean locked;
+    protected Intent destination;
 
     Enter() {
         name = "Enter room";
+    }
+
+    Enter(boolean status, Intent dest) {
+        this.name = "Enter room";
+        this.locked = status;
+        this.destination = dest;
     }
 
     public String getName() {
         return name;
     }
 
-    public void executeAction() {
-        //Should cause the app to viewchange to the appropriate room (need to figure out how to parametrize that)
-        //or else display a message informing the player that the door is locked. Need to figure out some of how to handle this
-        //in here or else how to handle it elsewhere.
-
-        //Might just have stuff telling the action status handled when the action is added to the list and modify when status changes.
+    public void executeAction(Context context) {
+        if (! locked) context.startActivity(this.destination);
+        else Toast.makeText(context, "The door is locked.", Toast.LENGTH_LONG).show();
     }
 }
 
@@ -69,7 +76,7 @@ class TextOnly extends Action {
         return name;
     }
 
-    public void executeAction() {
-        //Display result
+    public void executeAction(Context context) {
+        Toast.makeText(context, this.result, Toast.LENGTH_LONG).show();
     }
 }

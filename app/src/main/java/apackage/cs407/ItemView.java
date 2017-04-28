@@ -30,7 +30,7 @@ public class ItemView extends AppCompatActivity {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Action action = (Action) parent.getItemAtPosition(position);
 
-                        action.executeAction();
+                        action.executeAction(ItemView.this);
 
                         finish();
 
