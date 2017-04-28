@@ -17,11 +17,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FullscreenActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_fullscreen"
-            android:theme="@style/FullscreenTheme" />
-        <activity
             android:name=".LeaderboardActivity"
             android:label="@string/title_activity_leaderboard"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -31,8 +26,13 @@
             android:label="@string/title_activity_start"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Inventory" />
-        <activity android:name=".ResultsName"></activity>
-        <activity android:name=".ItemView"></activity>
+        <activity android:name=".ResultsName" />
+        <activity android:name=".ItemView" />
+        <activity android:name=".Room1" />
+        <activity android:name=".Room2" />
+        <activity android:name=".Room3" />
+        <activity android:name=".Room4" />
+        <activity android:name=".Room5"></activity>
     </application>
 
 </manifest>
