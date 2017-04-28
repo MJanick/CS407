@@ -32,6 +32,8 @@ public class ItemView extends AppCompatActivity {
 
                         action.executeAction(ItemView.this);
 
+                        
+
                         finish();
 
                     }

@@ -57,6 +57,9 @@ public class StartActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+        ((GlobalApp) getApplication()).setViewItem(null); //TODO Make sure this is at the top of each activity so that no weird leftovers happen from past item views
+
+
         final ArrayList<Item> items = new ArrayList<>();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.inventoryButton);
@@ -110,14 +113,28 @@ public class StartActivity extends AppCompatActivity {
         doorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Item door = new Item("Door", 100, "", false, 0, R.mipmap.ic_launcher, "An unlocked door to another room.");
-                door.addAction(new Enter(false, new Intent(StartActivity.this, LeaderboardActivity.class)));
                 Item curr = ((GlobalApp) getApplication()).getItem();
+                Item door = new Item("Door", 100, "", false, 0, R.mipmap.ic_launcher, "A locked door to another room.");
+                door.addAction(new Enter((curr != null && curr.getName().equals("Key")), new Intent(StartActivity.this, LeaderboardActivity.class)));
                 if (curr != null && curr.getName().equals("Wrench")) door.addAction(new TextOnly("Smack door with wrench", "Didn't do anything."));
                 ((GlobalApp) getApplication()).setViewItem(door);
 
                 startActivity(new Intent(StartActivity.this, ItemView.class));
             }});
+
+        final FloatingActionButton sampleKeyButton = (FloatingActionButton) findViewById(R.id.sampleKey);
+        sampleKeyButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Item key = new Item("Key", 100, "A key to some door", true, 0, R.mipmap.ic_launcher, "This is a key, despite appearances.");
+                    ((GlobalApp) getApplication()).setViewItem(key);
+                    key.addAction(new Take(sampleKeyButton));
+
+                    startActivity(new Intent(StartActivity.this, ItemView.class));
+                }
+            });
+
 
 
 

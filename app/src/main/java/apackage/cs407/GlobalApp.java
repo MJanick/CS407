@@ -9,17 +9,17 @@ import java.util.ArrayList;
  */
 
 public class GlobalApp extends Application {
-    private ArrayList<Item> currInventory;
+    private static ArrayList<Item> currInventory;
     private Item currItem;
     private DBManager dbman;
     private static Item viewItem = null;
 
-    public ArrayList<Item> getInventory() {
+    public static ArrayList<Item> getInventory() {
         return currInventory;
     }
 
-    public void setInventory(ArrayList<Item> inv) {
-        this.currInventory = inv;
+    public static void setInventory(ArrayList<Item> inv) {
+        currInventory = inv;
     }
 
     public Item getItem() {

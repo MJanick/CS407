@@ -2,7 +2,12 @@ package apackage.cs407;
 
 import android.content.Context;
 import android.content.Intent;
+import android.provider.Settings;
+import android.support.design.widget.FloatingActionButton;
+import android.view.View;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 /**
  * Created by Sachal on 4/24/2017.
@@ -33,7 +38,7 @@ class Examine extends Action {
 class Enter extends Action {
     protected String name;
     protected int time;
-    protected boolean locked;
+    protected boolean unlocked;
     protected Intent destination;
 
     Enter() {
@@ -42,7 +47,7 @@ class Enter extends Action {
 
     Enter(boolean status, Intent dest) {
         this.name = "Enter room";
-        this.locked = status;
+        this.unlocked = status;
         this.destination = dest;
     }
 
@@ -51,7 +56,7 @@ class Enter extends Action {
     }
 
     public void executeAction(Context context) {
-        if (! locked) context.startActivity(this.destination);
+        if (unlocked) context.startActivity(this.destination);
         else Toast.makeText(context, "The door is locked.", Toast.LENGTH_LONG).show();
     }
 }
@@ -78,5 +83,34 @@ class TextOnly extends Action {
 
     public void executeAction(Context context) {
         Toast.makeText(context, this.result, Toast.LENGTH_LONG).show();
+    }
+}
+
+class Take extends Action {
+    protected String name;
+    protected int time;
+    protected FloatingActionButton btn;
+    //TODO Can also add a field for a custom message that displays if it cannot be taken and a non-default constructor
+
+    public Take() {
+        this.name = "Take " + GlobalApp.getViewItem().getName();
+    }
+
+    public Take(FloatingActionButton btn) {
+        this.name = "Take " + GlobalApp.getViewItem().getName();
+        this.btn = btn;
+    }
+
+    public String getName() {return name;}
+
+    public void executeAction (Context context) {
+        if (! GlobalApp.getViewItem().getPickup()) Toast.makeText(context, "Cannot currently take item", Toast.LENGTH_LONG).show();
+        else {
+            ArrayList<Item> items = GlobalApp.getInventory();
+            items.add(GlobalApp.getViewItem());
+            Toast.makeText(context, "Took " + GlobalApp.getViewItem().getName(), Toast.LENGTH_LONG).show();
+            btn.setVisibility(View.GONE); //TODO Obviously we can't hardcode which button to apply the function to so this will need modification
+        }
+
     }
 }
