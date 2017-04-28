@@ -47,5 +47,15 @@
         android:layout_height="wrap_content"
         android:text="Button2" />
 
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@mipmap/backpack"
+        android:background="@android:color/transparent"
+        android:layout_toLeftOf="@id/midpoint"
+        android:layout_alignTop="@id/midpoint"/>
+
 
 </RelativeLayout>
