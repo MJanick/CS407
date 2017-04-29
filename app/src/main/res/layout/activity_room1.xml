@@ -32,31 +32,55 @@
         android:layout_alignLeft="@id/button"
         android:layout_below="@id/button"/>
 
-    <Button
-        android:id="@+id/button3"
+    <ImageButton
+        android:id="@+id/Exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/button"
-        android:layout_alignEnd="@id/helper"
-        android:layout_alignRight="@id/helper"
-        android:text="Button3" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button2" />
+        app:srcCompat="@mipmap/Door"
+        android:layout_above="@+id/button"
+        android:layout_alignLeft="@+id/Door2"
+        android:layout_alignStart="@+id/Door2" />
 
     <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="120dp"
-        android:layout_height="50dp"
-        android:layout_above="@+id/midpoint"
-        android:layout_below="@+id/button3"
-        android:layout_toLeftOf="@id/midpoint"
-        android:background="@android:color/transparent"
-        android:scaleType="fitXY"
-        app:srcCompat="@mipmap/backpack" />
+        android:id="@+id/Door2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/Door"
+        android:layout_below="@+id/Candle"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="33dp"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="10dp" />
+
+    <ImageButton
+        android:id="@+id/Shelf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/Shelf"
+        android:layout_alignTop="@+id/Exit"
+        android:layout_alignLeft="@+id/midpoint"
+        android:layout_alignStart="@+id/midpoint" />
+
+    <ImageButton
+        android:id="@+id/Candle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/Candle"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:id="@+id/Box"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/LockedBox"
+        android:layout_alignBottom="@+id/Door2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="21dp"
+        android:layout_marginEnd="21dp" />
 
 
 </RelativeLayout>
