@@ -46,6 +46,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button2" />
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:layout_marginTop="460dp"
+        android:text="Reset" />
 
     <ImageButton
         android:id="@+id/imageButton"
