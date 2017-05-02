@@ -7,6 +7,57 @@
     tools:context="apackage.cs407.Room2">
 
     <Button
+        android:id="@+id/Return"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:text="Return to Room 1"
+        android:layout_marginRight="17dp"
+        android:layout_marginEnd="17dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:id="@+id/Door3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/door"
+        android:layout_marginRight="19dp"
+        android:layout_marginEnd="19dp"
+        android:layout_above="@+id/DoorM"
+        android:layout_toLeftOf="@+id/DoorM"
+        android:layout_toStartOf="@+id/DoorM"
+        android:layout_marginBottom="29dp" />
+
+    <ImageButton
+        android:id="@+id/DoorM"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/door"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp" />
+
+    <ImageButton
+        android:id="@+id/Door4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/Door3"
+        android:layout_marginLeft="19dp"
+        android:layout_marginStart="19dp"
+        android:layout_toEndOf="@+id/DoorM"
+        android:layout_toRightOf="@+id/DoorM"
+        app:srcCompat="@mipmap/door" />
+
+    <ImageButton
+        android:id="@+id/Dog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/dog"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+    <Button
         android:id="@+id/reset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

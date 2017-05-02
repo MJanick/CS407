@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -89,27 +90,36 @@ class TextOnly extends Action {
 class Take extends Action {
     protected String name;
     protected int time;
-    protected FloatingActionButton btn;
+    protected ImageButton btn;
+    protected Item alt;
     //TODO Can also add a field for a custom message that displays if it cannot be taken and a non-default constructor
 
     public Take() {
         this.name = "Take " + GlobalApp.getViewItem().getName();
     }
 
-    public Take(FloatingActionButton btn) {
+    public Take(ImageButton btn) {
         this.name = "Take " + GlobalApp.getViewItem().getName();
         this.btn = btn;
+        this.alt = null;
+    }
+
+    public Take(Item item) {
+        this.name = "Take " + item.getName();
+        this.btn = null;
+        this.alt = item;
     }
 
     public String getName() {return name;}
 
     public void executeAction (Context context) {
-        if (! GlobalApp.getViewItem().getPickup()) Toast.makeText(context, "Cannot currently take item", Toast.LENGTH_LONG).show();
+        Item toTake = (alt == null) ? GlobalApp.getViewItem() : alt;
+        if (! toTake.getPickup()) Toast.makeText(context, "Cannot currently take item", Toast.LENGTH_LONG).show();
         else {
             ArrayList<Item> items = GlobalApp.getInventory();
-            items.add(GlobalApp.getViewItem());
-            Toast.makeText(context, "Took " + GlobalApp.getViewItem().getName(), Toast.LENGTH_LONG).show();
-            btn.setVisibility(View.GONE); //TODO Obviously we can't hardcode which button to apply the function to so this will need modification
+            items.add(toTake);
+            Toast.makeText(context, "Took " + toTake.getName(), Toast.LENGTH_LONG).show();
+            if (btn != null) btn.setVisibility(View.GONE);
         }
 
     }

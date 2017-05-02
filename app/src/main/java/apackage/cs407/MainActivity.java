@@ -20,19 +20,19 @@ public class MainActivity extends AppCompatActivity {
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, StartActivity.class));
+            public void onClick(View v) { //TODO The initial setup of inventory, etc. should be moved here? Maybe?
+                startActivity(new Intent(MainActivity.this, Room1.class));
             }
         });
 
-        Button optionsButton = (Button)findViewById(R.id.optionsButton);
+        //Button optionsButton = (Button)findViewById(R.id.optionsButton);
 
-        optionsButton.setOnClickListener(new View.OnClickListener() {
+        /*optionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, Room1.class));
             }
-        });
+        });*/
 
         Button leaderboardButton = (Button)findViewById(R.id.leaderboardButton);
 
