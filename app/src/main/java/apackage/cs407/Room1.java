@@ -146,6 +146,15 @@ public class Room1 extends AppCompatActivity {
             }
         });
 
+        Button resetButton = (Button)findViewById(R.id.reset);
+
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(new MainActivity(), StartActivity.class));
+            }
+        });
+
 
 
 
