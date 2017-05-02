@@ -58,11 +58,12 @@ public class Room1 extends AppCompatActivity {
         items.add(soda); //TODO These might want to be moved to before the first room is loaded / on the reset
 
         Item exitKey = new Item ("Exit Key", 1, "The key to exit the house!", true, 0, R.mipmap.key, "");
-        Item ladder = new Item ("Ladder", 1, "A small ladder", true, 0, R.mipmap.ladder, "");
         Item lockboxKey = new Item("Lockbox Key", 1, "The key to a small lockbox", true, 0, R.mipmap.key, "");
+        Item storeRoomKey = new Item("Storeroom Key", 1, "The key to a storeroom", true, 0, R.mipmap.key, "");
+
 
         items.add(exitKey);
-        items.add(ladder);
+        items.add(storeRoomKey);
         items.add(lockboxKey);
 
         //TODO DELETE ALL ITEMS AFTER THE SODA, THESE ARE HERE PURELY FOR TESTING AND MUST ACTUALLY BE OBTAINED IN OTHER ROOMS IN THE FINAL VERSION

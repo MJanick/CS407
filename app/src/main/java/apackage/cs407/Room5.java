@@ -19,18 +19,14 @@ public class Room5 extends AppCompatActivity {
         Return.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Item door2 = new Item("Door", 100, "", false, 0, R.mipmap.door, "An unlocked door.");
-                ((GlobalApp) getApplication()).setViewItem(door2);
-                door2.addAction(new Enter(true, new Intent(Room5.this, Room3.class)));
-                startActivity(new Intent(Room5.this, ItemView.class));
+                startActivity(new Intent(Room5.this, Room3.class));
             }});
 
         final ImageButton ladderButton = (ImageButton) findViewById(R.id.Ladder);
         ladderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Item curr = ((GlobalApp) getApplication()).getItem();
-                Item ladder = new Item ("Ladder", 1, "A small ladder", true, 0, R.mipmap.ladder, "");
+                Item ladder = new Item ("Ladder", 1, "A small ladder", true, 0, R.mipmap.ladder, "A small ladder");
                 ((GlobalApp) getApplication()).setViewItem(ladder);
                 ladder.addAction(new Take(ladderButton));
 

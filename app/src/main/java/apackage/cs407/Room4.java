@@ -20,10 +20,7 @@ public class Room4 extends AppCompatActivity {
         Return.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Item door2 = new Item("Door", 100, "", false, 0, R.mipmap.door, "An unlocked door.");
-                ((GlobalApp) getApplication()).setViewItem(door2);
-                door2.addAction(new Enter(true, new Intent(Room4.this, Room2.class)));
-                startActivity(new Intent(Room4.this, ItemView.class));
+                startActivity(new Intent(Room4.this, Room2.class));
             }});
 
         ImageButton fridgeButton = (ImageButton) findViewById(R.id.Fridge);
