@@ -11,7 +11,24 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_centerInParent="true"
-        android:background="#3344DD" />
+        android:background="#3344DD"
+        android:visibility="invisible"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/inventoryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_marginLeft="280dp"
+        android:src="@mipmap/backpack" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/currentItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_margin="90dp"
+        android:src="@mipmap/ic_launcher" />
 
     <Button
         android:id="@+id/button"
@@ -21,7 +38,8 @@
         android:layout_toEndOf="@id/midpoint"
         android:layout_toRightOf="@id/midpoint"
         android:layout_marginLeft="10dp"
-        android:text="Button1" />
+        android:text="Button1"
+        android:visibility="invisible"/>
 
     <View
         android:id="@+id/helper"
@@ -36,7 +54,7 @@
         android:id="@+id/Exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/Door"
+        app:srcCompat="@mipmap/door"
         android:layout_above="@+id/button"
         android:layout_alignLeft="@+id/Door2"
         android:layout_alignStart="@+id/Door2" />
@@ -45,7 +63,10 @@
         android:id="@+id/Door2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button2" />
+        app:srcCompat="@mipmap/door"
+        android:layout_above="@+id/helper"
+        android:layout_alignLeft="@+id/Candle"
+        android:layout_alignStart="@+id/Candle"/>
     <Button
         android:id="@+id/reset"
         android:layout_width="wrap_content"
@@ -53,19 +74,13 @@
         android:layout_marginBottom="100dp"
         android:layout_marginTop="460dp"
         android:text="Reset" />
-        app:srcCompat="@mipmap/Door"
-        android:layout_below="@+id/Candle"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="33dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="10dp" />
+
 
     <ImageButton
         android:id="@+id/Shelf"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/Shelf"
+        app:srcCompat="@mipmap/shelf"
         android:layout_alignTop="@+id/Exit"
         android:layout_alignLeft="@+id/midpoint"
         android:layout_alignStart="@+id/midpoint" />
@@ -74,7 +89,7 @@
         android:id="@+id/Candle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/Candle"
+        app:srcCompat="@mipmap/candle"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -83,8 +98,8 @@
         android:id="@+id/Box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/LockedBox"
-        android:layout_alignBottom="@+id/Door2"
+        app:srcCompat="@mipmap/lockedbox"
+        android:layout_alignBottom="@+id/Candle"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="21dp"

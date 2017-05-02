@@ -22,7 +22,7 @@
         android:id="@+id/Case1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/GlassCase"
+        app:srcCompat="@mipmap/glasscase"
         android:layout_alignTop="@+id/Case3"
         android:layout_alignLeft="@+id/Door"
         android:layout_alignStart="@+id/Door" />
@@ -32,7 +32,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="12dp"
-        app:srcCompat="@mipmap/GlassCase"
+        app:srcCompat="@mipmap/glasscase"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
@@ -40,7 +40,7 @@
         android:id="@+id/Case3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/GlassCase"
+        app:srcCompat="@mipmap/glasscase"
         android:layout_above="@+id/Case2"
         android:layout_alignRight="@+id/Return"
         android:layout_alignEnd="@+id/Return"
@@ -50,7 +50,7 @@
         android:id="@+id/Door"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/Door"
+        app:srcCompat="@mipmap/door"
         android:layout_alignTop="@+id/Return"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

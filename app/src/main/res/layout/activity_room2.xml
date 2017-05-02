@@ -22,7 +22,7 @@
         android:id="@+id/Door3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/Door"
+        app:srcCompat="@mipmap/door"
         android:layout_marginRight="19dp"
         android:layout_marginEnd="19dp"
         android:layout_above="@+id/DoorM"
@@ -34,7 +34,7 @@
         android:id="@+id/DoorM"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/Door"
+        app:srcCompat="@mipmap/door"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp" />
@@ -48,13 +48,13 @@
         android:layout_marginStart="19dp"
         android:layout_toEndOf="@+id/DoorM"
         android:layout_toRightOf="@+id/DoorM"
-        app:srcCompat="@mipmap/Door" />
+        app:srcCompat="@mipmap/door" />
 
     <ImageButton
         android:id="@+id/Dog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/Dog"
+        app:srcCompat="@mipmap/dog"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
     <Button
