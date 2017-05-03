@@ -17,6 +17,9 @@ import java.util.ArrayList;
 public class Room3 extends AppCompatActivity {
 
     private FloatingActionButton currItem3;
+    private boolean fishTaken = false;
+    private boolean keyTaken = false;
+    private boolean magnetTaken = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,21 @@ public class Room3 extends AppCompatActivity {
         ((GlobalApp) getApplication()).setViewItem(null);
 
         final ArrayList<Item> items = ((GlobalApp) this.getApplication()).getInventory();
+
+        if(!fishTaken || !keyTaken || !magnetTaken) {
+            for(int i = 0; i < items.size(); i++) {
+                if(items.get(i).getName().equals("Fish")) {
+                    fishTaken = true;
+                }
+                if(items.get(i).getName().equals("Storeroom Key")) {
+                    keyTaken = true;
+                }
+                if(items.get(i).getName().equals("Magnet")) {
+                    magnetTaken = true;
+                }
+            }
+        }
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.inventoryButton3);
 
@@ -67,6 +85,59 @@ public class Room3 extends AppCompatActivity {
             }
         });
 
+
+
+        final ImageButton case1Button = (ImageButton) findViewById(R.id.Case1);
+        if(fishTaken) {
+            case1Button.setVisibility(View.GONE);
+        }
+        case1Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Item curr = ((GlobalApp) getApplication()).getItem();
+                Item case1 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A glass case. If only you could break it open.");
+                ((GlobalApp) getApplication()).setViewItem(case1);
+                if (curr != null && curr.getName().equals("Hammer")) {
+                    case1.addAction(new Take(new Item("Fish", 5, "Ugh. It's a bit smelly.", true, 0, R.mipmap.fish, "")));
+                }
+                startActivity(new Intent(Room3.this, ItemView.class));
+            }});
+
+        final ImageButton case2Button = (ImageButton) findViewById(R.id.Case2);
+        if(keyTaken) {
+            case2Button.setVisibility(View.GONE);
+        }
+        case2Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Item curr = ((GlobalApp) getApplication()).getItem();
+                Item case2 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A glass case. If only you could break it open.");
+                ((GlobalApp) getApplication()).setViewItem(case2);
+                if (curr != null && curr.getName().equals("Hammer")) {
+                    case2.addAction(new Take(new Item("Storeroom Key", 5, "The key to the storeroom", true, 0, R.mipmap.key, "")));
+                }
+                startActivity(new Intent(Room3.this, ItemView.class));
+            }});
+
+        final ImageButton case3Button = (ImageButton) findViewById(R.id.Case3);
+        if(magnetTaken) {
+            case3Button.setVisibility(View.GONE);
+        }
+        case3Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Item curr = ((GlobalApp) getApplication()).getItem();
+                Item case3 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A glass case. If only you could break it open.");
+                ((GlobalApp) getApplication()).setViewItem(case3);
+                if (curr != null && curr.getName().equals("Hammer")) {
+                    case3.addAction(new Take(new Item("Magnet", 5, "I sense a bit of attraction.", true, 0, R.mipmap.magnet, "")));
+                }
+                startActivity(new Intent(Room3.this, ItemView.class));
+            }});
+
+
+
+
         ImageButton door5 = (ImageButton) findViewById(R.id.Door);
         door5.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,6 +168,22 @@ public class Room3 extends AppCompatActivity {
             currItem3.setImageResource(R.mipmap.ic_launcher);
         } else {
             currItem3.setImageResource(item.getPic());
+        }
+
+        ArrayList<Item> check = ((GlobalApp) this.getApplication()).getInventory();
+
+        if(!fishTaken || !keyTaken || !magnetTaken) {
+            for(int i = 0; i < check.size(); i++) {
+                if(check.get(i).getName().equals("Fish")) {
+                    fishTaken = true;
+                }
+                if(check.get(i).getName().equals("Storeroom Key")) {
+                    keyTaken = true;
+                }
+                if(check.get(i).getName().equals("Magnet")) {
+                    magnetTaken = true;
+                }
+            }
         }
     }
 }

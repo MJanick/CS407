@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Room5 extends AppCompatActivity {
 
     private FloatingActionButton currItem5;
+    private boolean ladderTaken = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,14 @@ public class Room5 extends AppCompatActivity {
         ((GlobalApp) getApplication()).setViewItem(null);
 
         final ArrayList<Item> items = ((GlobalApp) this.getApplication()).getInventory();
+
+        if(!ladderTaken) {
+            for(int i = 0; i < items.size(); i++) {
+                if(items.get(i).getName().equals("Ladder")) {
+                    ladderTaken = true;
+                }
+            }
+        }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.inventoryButton2);
 
@@ -71,6 +80,9 @@ public class Room5 extends AppCompatActivity {
             }});
 
         final ImageButton ladderButton = (ImageButton) findViewById(R.id.Ladder);
+        if(ladderTaken) {
+            ladderButton.setVisibility(View.GONE);
+        }
         ladderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,6 +105,16 @@ public class Room5 extends AppCompatActivity {
             currItem5.setImageResource(R.mipmap.ic_launcher);
         } else {
             currItem5.setImageResource(item.getPic());
+        }
+
+        ArrayList<Item> check = ((GlobalApp) this.getApplication()).getInventory();
+
+        if(!ladderTaken) {
+            for(int i = 0; i < check.size(); i++) {
+                if(check.get(i).getName().equals("Ladder")) {
+                    ladderTaken = true;
+                }
+            }
         }
     }
 }
