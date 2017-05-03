@@ -26,6 +26,9 @@ import java.util.ArrayList;
 public class Room1 extends AppCompatActivity {
 
     private FloatingActionButton currItem;
+    private boolean knifeTaken = false;
+    private boolean matchesTaken = false;
+    private boolean candleTaken = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +36,21 @@ public class Room1 extends AppCompatActivity {
         setContentView(R.layout.activity_room1);
         ((GlobalApp) getApplication()).setViewItem(null); //TODO Make sure this is at the top of each activity so that no weird leftovers happen from past item views
 
+        final ArrayList<Item> items = ((GlobalApp) this.getApplication()).getInventory();
 
-        final ArrayList<Item> items = new ArrayList<>();
+        if(!knifeTaken || !matchesTaken || !candleTaken) {
+            for(int i = 0; i < items.size(); i++) {
+                if(items.get(i).getName().equals("Knife")) {
+                    knifeTaken = true;
+                }
+                if(items.get(i).getName().equals("Matches")) {
+                    matchesTaken = true;
+                }
+                if(items.get(i).getName().equals("Candle")) {
+                    candleTaken = true;
+                }
+            }
+        }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.inventoryButton);
 
@@ -49,32 +65,14 @@ public class Room1 extends AppCompatActivity {
 
         });
 
-        Item wrench = new Item("Wrench", 10, "This can be used to whack things or on bolts.", true, 50, R.mipmap.wrench2, "");
-        Item hammer = new Item("Hammer", 5, "This can also whack things, especially nails or zombies", true, 25, R.mipmap.hammer, "");
-        Item soda = new Item("Soda", 1, "I'm thirsty", true, 100, R.mipmap.soda, "");
-
-        items.add(wrench);
-        items.add(hammer);
-        items.add(soda); //TODO These might want to be moved to before the first room is loaded / on the reset
-
-        Item exitKey = new Item ("Exit Key", 1, "The key to exit the house!", true, 0, R.mipmap.key, "");
-        Item lockboxKey = new Item("Lockbox Key", 1, "The key to a small lockbox", true, 0, R.mipmap.key, "");
-        Item storeRoomKey = new Item("Storeroom Key", 1, "The key to a storeroom", true, 0, R.mipmap.key, "");
-
-
-        items.add(exitKey);
-        items.add(storeRoomKey);
-        items.add(lockboxKey);
-
-        //TODO DELETE ALL ITEMS AFTER THE SODA, THESE ARE HERE PURELY FOR TESTING AND MUST ACTUALLY BE OBTAINED IN OTHER ROOMS IN THE FINAL VERSION
-
-
         ((GlobalApp) this.getApplication()).setInventory(items);
 
         currItem = (FloatingActionButton) findViewById(R.id.currentItem);
         Item item = ((GlobalApp) this.getApplication()).getItem();
         if(item == null) {
             currItem.setImageResource(R.mipmap.ic_launcher);
+        } else {
+            currItem.setImageResource(item.getPic());
         }
 
 
@@ -117,12 +115,15 @@ public class Room1 extends AppCompatActivity {
                 Item curr = ((GlobalApp) getApplication()).getItem();
                 Item shelf = new Item("Shelf", 100, "", false, 0, R.mipmap.shelf, "A shelf. There's something on the top but it's too high to reach without a ladder.");
                 ((GlobalApp) getApplication()).setViewItem(shelf);
-                if (curr != null && curr.getName().equals("Ladder")) {
+                if (curr != null && curr.getName().equals("Ladder") && !matchesTaken) {
                     shelf.addAction(new Take(new Item("Matches", 5, "A box of matches", true, 0, R.mipmap.matches, "")));
                 }
                 startActivity(new Intent(Room1.this, ItemView.class));
             }});
         final ImageButton candleButton = (ImageButton) findViewById(R.id.Candle);
+        if(candleTaken) {
+            candleButton.setVisibility(View.GONE);
+        }
         candleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,7 +142,7 @@ public class Room1 extends AppCompatActivity {
                 Item curr = ((GlobalApp) getApplication()).getItem();
                 Item lockbox = new Item("Lockbox", 100, "A locked box", false, 0, R.mipmap.lockedbox, "A lockbox. What's inside?");
                 ((GlobalApp) getApplication()).setViewItem(lockbox);
-                if (curr != null && curr.getName().equals("Lockbox Key"))
+                if (curr != null && curr.getName().equals("Lockbox Key") && !knifeTaken)
                     lockbox.addAction(new Take(new Item("Knife", 7, "A well-sharpened knife", true, 0, R.mipmap.knife, ""))); //TODO Need to make sure this doesn't happen if they've already taken the knife
                 startActivity(new Intent(Room1.this, ItemView.class));
             }
@@ -166,11 +167,26 @@ public class Room1 extends AppCompatActivity {
         super.onRestart();
 
         //Do your code here
+        ArrayList<Item> check = ((GlobalApp) this.getApplication()).getInventory();
         Item item = ((GlobalApp) this.getApplication()).getItem();
         if(item == null) {
             currItem.setImageResource(R.mipmap.ic_launcher);
         } else {
             currItem.setImageResource(item.getPic());
+        }
+
+        if(!knifeTaken || !matchesTaken || !candleTaken) {
+            for(int i = 0; i < check.size(); i++) {
+                if(check.get(i).getName().equals("Knife")) {
+                    knifeTaken = true;
+                }
+                if(check.get(i).getName().equals("Matches")) {
+                    matchesTaken = true;
+                }
+                if(check.get(i).getName().equals("Candle")) {
+                    candleTaken = true;
+                }
+            }
         }
     }
 
