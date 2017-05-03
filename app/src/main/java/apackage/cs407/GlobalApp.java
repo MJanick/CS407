@@ -13,6 +13,7 @@ public class GlobalApp extends Application {
     private Item currItem;
     private DBManager dbman;
     private static Item viewItem = null;
+    private static int numActions;
 
     public static ArrayList<Item> getInventory() {
         return currInventory;
@@ -40,5 +41,13 @@ public class GlobalApp extends Application {
 
     public void setDB(DBManager dbman) {
         this.dbman = dbman;
+    }
+
+    public static int getNumActions() {
+        return numActions;
+    }
+
+    public static void setNumActions(int num) {
+        numActions = numActions + num;
     }
 }

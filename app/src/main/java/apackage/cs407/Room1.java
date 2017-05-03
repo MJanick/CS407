@@ -91,9 +91,9 @@ public class Room1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Item curr = ((GlobalApp) getApplication()).getItem();
-                Item exit = new Item("Exit", 100, "", false, 0, R.mipmap.door, "A locked exit to the house.");
+                Item exit = new Item("Exit", 100, "", false, 0, R.mipmap.door, "A locked exit to the house.", 1);
                 ((GlobalApp) getApplication()).setViewItem(exit);
-                exit.addAction(new Enter((curr != null && curr.getName().equals("Exit Key")), new Intent(Room1.this, ResultsName.class)));
+                exit.addAction(new Enter((curr != null && curr.getName().equals("Exit Key")), new Intent(Room1.this, ResultsName.class), 1));
                 if (curr != null && curr.getName().equals("Wrench")) exit.addAction(new TextOnly("Smack door with wrench", "Didn't do anything."));
 
                 startActivity(new Intent(Room1.this, ItemView.class));
@@ -103,9 +103,9 @@ public class Room1 extends AppCompatActivity {
         door2Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Item door2 = new Item("Door", 100, "", false, 0, R.mipmap.door, "An unlocked door.");
+                Item door2 = new Item("Door", 100, "", false, 0, R.mipmap.door, "An unlocked door.", 1);
                 ((GlobalApp) getApplication()).setViewItem(door2);
-                door2.addAction(new Enter(true, new Intent(Room1.this, Room2.class)));
+                door2.addAction(new Enter(true, new Intent(Room1.this, Room2.class), 1));
                 startActivity(new Intent(Room1.this, ItemView.class));
             }});
         ImageButton shelfButton = (ImageButton) findViewById(R.id.Shelf);
@@ -115,13 +115,13 @@ public class Room1 extends AppCompatActivity {
                 Item curr = ((GlobalApp) getApplication()).getItem();
                 Item shelf;
                 if(!matchesTaken) {
-                    shelf = new Item("Shelf", 100, "", false, 0, R.mipmap.shelf, "A shelf. There's something on the top but it's too high to reach without a ladder.");
+                    shelf = new Item("Shelf", 100, "", false, 0, R.mipmap.shelf, "A shelf. There's something on the top but it's too high to reach without a ladder.", 1);
                 } else {
-                    shelf = new Item("Shelf", 100, "", false, 0, R.mipmap.shelf, "There was nothing left up there");
+                    shelf = new Item("Shelf", 100, "", false, 0, R.mipmap.shelf, "There was nothing left up there", 1);
                 }
                 ((GlobalApp) getApplication()).setViewItem(shelf);
                 if (curr != null && curr.getName().equals("Ladder") && !matchesTaken) {
-                    shelf.addAction(new Take(new Item("Matches", 5, "A box of matches", true, 0, R.mipmap.matches, "")));
+                    shelf.addAction(new Take(new Item("Matches", 5, "A box of matches", true, 0, R.mipmap.matches, "", 1), 1));
                 }
                 startActivity(new Intent(Room1.this, ItemView.class));
             }});
@@ -133,9 +133,9 @@ public class Room1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Item curr = ((GlobalApp) getApplication()).getItem();
-                Item candle = new Item("Candle", 100, "A lit candle", (curr != null && curr.getName().equals("Matches")), 0, R.mipmap.candle, "An unlit candle. Not worth picking up unless you're carrying matches.");
+                Item candle = new Item("Candle", 100, "A lit candle", (curr != null && curr.getName().equals("Matches")), 0, R.mipmap.candle, "An unlit candle. Not worth picking up unless you're carrying matches.", 1);
                 ((GlobalApp) getApplication()).setViewItem(candle);
-                candle.addAction(new Take(candleButton));
+                candle.addAction(new Take(candleButton, 1));
 
                 startActivity(new Intent(Room1.this, ItemView.class));
             }
@@ -147,13 +147,13 @@ public class Room1 extends AppCompatActivity {
                 Item curr = ((GlobalApp) getApplication()).getItem();
                 Item lockbox;
                 if(!knifeTaken) {
-                    lockbox = new Item("Lockbox", 100, "A locked box", false, 0, R.mipmap.lockedbox, "A lockbox. What's inside?");
+                    lockbox = new Item("Lockbox", 100, "A locked box", false, 0, R.mipmap.lockedbox, "A lockbox. What's inside?", 1);
                 } else {
-                    lockbox = new Item("Lockbox", 100, "A locked box", false, 0, R.mipmap.lockedbox, "A lockbox. You've already taken the knife.");
+                    lockbox = new Item("Lockbox", 100, "A locked box", false, 0, R.mipmap.lockedbox, "A lockbox. You've already taken the knife.", 1);
                 }
                 ((GlobalApp) getApplication()).setViewItem(lockbox);
                 if (curr != null && curr.getName().equals("Lockbox Key") && !knifeTaken)
-                    lockbox.addAction(new Take(new Item("Knife", 7, "A well-sharpened knife", true, 0, R.mipmap.knife, ""))); //TODO Need to make sure this doesn't happen if they've already taken the knife
+                    lockbox.addAction(new Take(new Item("Knife", 7, "A well-sharpened knife", true, 0, R.mipmap.knife, "", 1), 1)); //TODO Need to make sure this doesn't happen if they've already taken the knife
                 startActivity(new Intent(Room1.this, ItemView.class));
             }
         });

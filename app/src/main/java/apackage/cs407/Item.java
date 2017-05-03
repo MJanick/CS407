@@ -20,7 +20,7 @@ public class Item {
     private int score;
     private int pic;
 
-    public Item(String name, int numUses, String description, boolean pickup, int score, int pic, String examineResult) {
+    public Item(String name, int numUses, String description, boolean pickup, int score, int pic, String examineResult, int cost) {
         this.name = name;
         this.numUses = numUses;
         this.maxUses = numUses;
@@ -30,7 +30,7 @@ public class Item {
         this.pic = pic;
         this.examineResult = examineResult;
         this.actions = new ArrayList<Action>();
-        actions.add(new Examine());
+        actions.add(new Examine(cost));
     }
 
     public void addAction(Action act) {

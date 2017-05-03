@@ -93,10 +93,10 @@ public class Room4 extends AppCompatActivity {
 
                 Item Fridge;
                 if(!meatTaken) {
-                    Fridge = new Item("Fridge", 100, "", false, 0, R.mipmap.fridge, "A fridge, there`s some meat inside.");
-                    Fridge.addAction(new Take(new Item("Meat", 5, "Meat", true, 0, R.mipmap.meat, "")));
+                    Fridge = new Item("Fridge", 100, "", false, 0, R.mipmap.fridge, "A fridge, there`s some meat inside.", 1);
+                    Fridge.addAction(new Take(new Item("Meat", 5, "Meat", true, 0, R.mipmap.meat, "", 1), 1));
                 } else {
-                    Fridge = new Item("Fridge", 100, "", false, 0, R.mipmap.fridge, "A fridge, there's nothing important in here.");
+                    Fridge = new Item("Fridge", 100, "", false, 0, R.mipmap.fridge, "A fridge, there's nothing important in here.", 1);
                 }
                 ((GlobalApp) getApplication()).setViewItem(Fridge);
 
@@ -110,10 +110,10 @@ public class Room4 extends AppCompatActivity {
 
                 Item table;
                 if(!keyTaken) {
-                    table = new Item("Table", 100, "", false, 0, R.mipmap.table, "There's something under the table");
-                    table.addAction(new Take(new Item("Lockbox Key", 5, "Can open a lockbox somewhere", true, 0, R.mipmap.key, "")));
+                    table = new Item("Table", 100, "", false, 0, R.mipmap.table, "There's something under the table", 1);
+                    table.addAction(new Take(new Item("Lockbox Key", 5, "Can open a lockbox somewhere", true, 0, R.mipmap.key, "", 1), 1));
                 } else {
-                    table = new Item("Table", 100, "", false, 0, R.mipmap.table, "A bare table, better look somewhere else");
+                    table = new Item("Table", 100, "", false, 0, R.mipmap.table, "A bare table, better look somewhere else", 1);
                 }
                 ((GlobalApp) getApplication()).setViewItem(table);
                 startActivity(new Intent(Room4.this, ItemView.class));

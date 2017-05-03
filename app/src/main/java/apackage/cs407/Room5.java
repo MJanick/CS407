@@ -86,9 +86,9 @@ public class Room5 extends AppCompatActivity {
         ladderButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Item ladder = new Item ("Ladder", 1, "A small ladder", true, 0, R.mipmap.ladder, "A small ladder");
+                Item ladder = new Item ("Ladder", 1, "A small ladder", true, 0, R.mipmap.ladder, "A small ladder", 1);
                 ((GlobalApp) getApplication()).setViewItem(ladder);
-                ladder.addAction(new Take(ladderButton));
+                ladder.addAction(new Take(ladderButton, 1));
 
                 startActivity(new Intent(Room5.this, ItemView.class));
             }

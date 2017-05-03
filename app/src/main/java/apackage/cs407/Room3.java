@@ -94,13 +94,13 @@ public class Room3 extends AppCompatActivity {
                 Item curr = ((GlobalApp) getApplication()).getItem();
                 Item case1;
                 if(!fishTaken) {
-                    case1 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A glass case. If only you could break it open.");
+                    case1 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A glass case. If only you could break it open.", 1);
                 } else {
-                    case1 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A broken glass case.");
+                    case1 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A broken glass case.", 1);
                 }
                 ((GlobalApp) getApplication()).setViewItem(case1);
                 if (curr != null && curr.getName().equals("Hammer") && !fishTaken) {
-                    case1.addAction(new Take(new Item("Fish", 5, "Ugh. It's a bit smelly.", true, 0, R.mipmap.fish, "")));
+                    case1.addAction(new Take(new Item("Fish", 5, "Ugh. It's a bit smelly.", true, 0, R.mipmap.fish, "", 1), 1));
                 }
                 startActivity(new Intent(Room3.this, ItemView.class));
             }});
@@ -112,13 +112,13 @@ public class Room3 extends AppCompatActivity {
                 Item curr = ((GlobalApp) getApplication()).getItem();
                 Item case2;
                 if(!keyTaken) {
-                    case2 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A glass case. If only you could break it open.");
+                    case2 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A glass case. If only you could break it open.", 1);
                 } else {
-                    case2 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A broken glass case.");
+                    case2 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A broken glass case.", 1);
                 }
                 ((GlobalApp) getApplication()).setViewItem(case2);
                 if (curr != null && curr.getName().equals("Hammer") && !keyTaken) {
-                    case2.addAction(new Take(new Item("Storeroom Key", 5, "The key to the storeroom", true, 0, R.mipmap.key, "")));
+                    case2.addAction(new Take(new Item("Storeroom Key", 5, "The key to the storeroom", true, 0, R.mipmap.key, "", 1), 1));
                 }
                 startActivity(new Intent(Room3.this, ItemView.class));
             }});
@@ -131,13 +131,13 @@ public class Room3 extends AppCompatActivity {
                 Item curr = ((GlobalApp) getApplication()).getItem();
                 Item case3;
                 if(!magnetTaken) {
-                    case3 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A glass case. If only you could break it open.");
+                    case3 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A glass case. If only you could break it open.", 1);
                 } else {
-                    case3 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A broken glass case.");
+                    case3 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A broken glass case.", 1);
                 }
                 ((GlobalApp) getApplication()).setViewItem(case3);
                 if (curr != null && curr.getName().equals("Hammer") && !magnetTaken) {
-                    case3.addAction(new Take(new Item("Magnet", 5, "I sense a bit of attraction.", true, 0, R.mipmap.magnet, "")));
+                    case3.addAction(new Take(new Item("Magnet", 5, "I sense a bit of attraction.", true, 0, R.mipmap.magnet, "", 1), 1));
                 }
                 startActivity(new Intent(Room3.this, ItemView.class));
             }});
@@ -150,9 +150,9 @@ public class Room3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Item curr = ((GlobalApp) getApplication()).getItem();
-                Item door5 = new Item("Door", 100, "", false, 0, R.mipmap.door, "A locked door to a storeroom.");
+                Item door5 = new Item("Door", 100, "", false, 0, R.mipmap.door, "A locked door to a storeroom.", 1);
                 ((GlobalApp) getApplication()).setViewItem(door5);
-                door5.addAction(new Enter((curr != null && curr.getName().equals("Storeroom Key")), new Intent(Room3.this, Room5.class)));
+                door5.addAction(new Enter((curr != null && curr.getName().equals("Storeroom Key")), new Intent(Room3.this, Room5.class), 1));
 
                 startActivity(new Intent(Room3.this, ItemView.class));
             }});

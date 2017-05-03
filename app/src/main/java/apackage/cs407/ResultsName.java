@@ -22,7 +22,7 @@ public class ResultsName extends AppCompatActivity {
         nameText = (EditText) findViewById(R.id.nameText);
         scoreView = (TextView) findViewById(R.id.scoreView);
         dbManager = new DBManager(this, null, null, 1);
-        score = 1;//calculateScore();
+        score = calculateScore();
         scoreView.setText(score + "");
 
         Button enterNameButton = (Button)findViewById(R.id.enterNameButton);
@@ -37,8 +37,14 @@ public class ResultsName extends AppCompatActivity {
         });
 
     }
-/*
+
     public int calculateScore() {
-        return 0;
-    }*/
+        int finalActions = ((GlobalApp) getApplication()).getNumActions();
+        int finalScore = 100 - finalActions;
+        if(finalScore > 0) {
+            return finalScore;
+        } else {
+            return 0;
+        }
+    }
 }

@@ -77,9 +77,9 @@ public class Room2 extends AppCompatActivity {
         Door3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Item door3 = new Item("Door", 100, "", false, 0, R.mipmap.door, "An unlocked door.");
+                Item door3 = new Item("Door", 100, "", false, 0, R.mipmap.door, "An unlocked door.", 1);
                 ((GlobalApp) getApplication()).setViewItem(door3);
-                door3.addAction(new Enter(true, new Intent(Room2.this, Room3.class)));
+                door3.addAction(new Enter(true, new Intent(Room2.this, Room3.class), 1));
                 startActivity(new Intent(Room2.this, ItemView.class));
             }});
 
@@ -88,9 +88,9 @@ public class Room2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Item curr = ((GlobalApp) getApplication()).getItem();
-                Item exit = new Item("Door", 100, "", false, 0, R.mipmap.door, "An unlocked door. The room it leads to is too dark to enter without a light source.");
+                Item exit = new Item("Door", 100, "", false, 0, R.mipmap.door, "An unlocked door. The room it leads to is too dark to enter without a light source.", 1);
                 ((GlobalApp) getApplication()).setViewItem(exit);
-                exit.addAction(new Enter((curr != null && curr.getName().equals("Candle")), new Intent(Room2.this, Room4.class)));
+                exit.addAction(new Enter((curr != null && curr.getName().equals("Candle")), new Intent(Room2.this, Room4.class), 1));
 
                 startActivity(new Intent(Room2.this, ItemView.class));
             }});
@@ -100,15 +100,15 @@ public class Room2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Item curr = ((GlobalApp) getApplication()).getItem();
-                Item guarddog = new Item("Guard Dog", 100, "", false, 0, R.mipmap.dog, "This dog is guarding something. He looks hungry");
+                Item guarddog;
                 if(!keyTaken) {
-                    guarddog = new Item("Guard Dog", 100, "", false, 0, R.mipmap.dog, "This dog is guarding something. He looks hungry.");
+                    guarddog = new Item("Guard Dog", 100, "", false, 0, R.mipmap.dog, "This dog is guarding something. He looks hungry.", 1);
                 } else {
-                    guarddog = new Item("Guard Dog", 100, "", false, 0, R.mipmap.dog, "He's so preoccupied with the meat he doesn't notice you took the key.");
+                    guarddog = new Item("Guard Dog", 100, "", false, 0, R.mipmap.dog, "He's so preoccupied with the meat he doesn't notice you took the key.", 1);
                 }
                 ((GlobalApp) getApplication()).setViewItem(guarddog);
                 if (curr != null && curr.getName().equals("Meat") && !keyTaken) {
-                    guarddog.addAction(new Take(new Item("Exit Key", 7, "This can be used to escape", true, 0, R.mipmap.key, "This can be used to escape")));
+                    guarddog.addAction(new Take(new Item("Exit Key", 7, "This can be used to escape", true, 0, R.mipmap.key, "This can be used to escape", 1), 1));
                 }
                 startActivity(new Intent(Room2.this, ItemView.class));
             }});

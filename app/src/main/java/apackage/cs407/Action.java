@@ -22,9 +22,11 @@ abstract class Action {
 class Examine extends Action {
     protected String name;
     protected int time;
+    protected int cost;
 
-    Examine() {
+    Examine(int cost) {
         name = "Examine";
+        this.cost = cost;
     }
 
     public String getName() {
@@ -32,6 +34,7 @@ class Examine extends Action {
     }
 
     public void executeAction(Context context) {
+        GlobalApp.setNumActions(cost);
         Toast.makeText(context, GlobalApp.getViewItem().examineResult, Toast.LENGTH_LONG).show();
     }
 }
@@ -41,15 +44,17 @@ class Enter extends Action {
     protected int time;
     protected boolean unlocked;
     protected Intent destination;
+    protected int cost;
 
     Enter() {
         name = "Enter room";
     }
 
-    Enter(boolean status, Intent dest) {
+    Enter(boolean status, Intent dest, int cost) {
         this.name = "Enter room";
         this.unlocked = status;
         this.destination = dest;
+        this.cost = cost;
     }
 
     public String getName() {
@@ -57,7 +62,10 @@ class Enter extends Action {
     }
 
     public void executeAction(Context context) {
-        if (unlocked) context.startActivity(this.destination);
+        if (unlocked) {
+            GlobalApp.setNumActions(cost);
+            context.startActivity(this.destination);
+        }
         else Toast.makeText(context, "Cannot enter with current held item.", Toast.LENGTH_LONG).show();
     }
 }
@@ -92,22 +100,24 @@ class Take extends Action {
     protected int time;
     protected ImageButton btn;
     protected Item alt;
-    //TODO Can also add a field for a custom message that displays if it cannot be taken and a non-default constructor
+    protected int cost;
 
     public Take() {
         this.name = "Take " + GlobalApp.getViewItem().getName();
     }
 
-    public Take(ImageButton btn) {
+    public Take(ImageButton btn, int cost) {
         this.name = "Take " + GlobalApp.getViewItem().getName();
         this.btn = btn;
         this.alt = null;
+        this.cost = cost;
     }
 
-    public Take(Item item) {
+    public Take(Item item, int cost) {
         this.name = "Take " + item.getName();
         this.btn = null;
         this.alt = item;
+        this.cost = cost;
     }
 
     public String getName() {return name;}
@@ -118,6 +128,7 @@ class Take extends Action {
         else {
             ArrayList<Item> items = GlobalApp.getInventory();
             items.add(toTake);
+            GlobalApp.setNumActions(cost);
             Toast.makeText(context, "Took " + toTake.getName(), Toast.LENGTH_LONG).show();
             if (btn != null) btn.setVisibility(View.GONE);
         }

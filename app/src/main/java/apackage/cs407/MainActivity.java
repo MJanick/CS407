@@ -18,9 +18,9 @@ public class MainActivity extends AppCompatActivity {
         DBManager dbManager = new DBManager(this, null, null, 1);
         ((GlobalApp) getApplication()).setDB(dbManager);
         final ArrayList<Item> items = new ArrayList<>();
-        final Item wrench = new Item("Wrench", 10, "This can be used to whack things or on bolts.", true, 50, R.mipmap.wrench2, "");
-        Item hammer = new Item("Hammer", 5, "This can also whack things, especially nails or zombies", true, 25, R.mipmap.hammer, "");
-        Item soda = new Item("Soda", 1, "I'm thirsty", true, 100, R.mipmap.soda, "");
+        final Item wrench = new Item("Wrench", 10, "This can be used to whack things or on bolts.", true, 50, R.mipmap.wrench2, "", 1);
+        Item hammer = new Item("Hammer", 5, "This can also whack things, especially nails or zombies", true, 25, R.mipmap.hammer, "", 1);
+        Item soda = new Item("Soda", 1, "I'm thirsty", true, 100, R.mipmap.soda, "", 1);
 
         items.add(wrench);
         items.add(hammer);
@@ -30,9 +30,10 @@ public class MainActivity extends AppCompatActivity {
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { //TODO The initial setup of inventory, etc. should be moved here? Maybe?
+            public void onClick(View v) {
                 ((GlobalApp) getApplication()).setInventory(items);
                 ((GlobalApp) getApplication()).setItem(wrench);
+                ((GlobalApp) getApplication()).setNumActions(0);
 
                 startActivity(new Intent(MainActivity.this, Room1.class));
             }
