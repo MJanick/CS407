@@ -57,7 +57,7 @@ public class Room1 extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((GlobalApp) getApplication()).setInventory(items);
+                //((GlobalApp) getApplication()).setInventory(items);
 
                 startActivity(new Intent(Room1.this, Inventory.class));
             }
@@ -65,7 +65,7 @@ public class Room1 extends AppCompatActivity {
 
         });
 
-        ((GlobalApp) this.getApplication()).setInventory(items);
+        //((GlobalApp) this.getApplication()).setInventory(items);
 
         currItem = (FloatingActionButton) findViewById(R.id.currentItem);
         Item item = ((GlobalApp) this.getApplication()).getItem();
