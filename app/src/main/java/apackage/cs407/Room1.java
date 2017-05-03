@@ -26,6 +26,9 @@ import java.util.ArrayList;
 public class Room1 extends AppCompatActivity {
 
     private FloatingActionButton currItem;
+    private boolean knifeTaken = false;
+    private boolean matchesTaken = false;
+    private boolean candleTaken = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,20 @@ public class Room1 extends AppCompatActivity {
         ((GlobalApp) getApplication()).setViewItem(null); //TODO Make sure this is at the top of each activity so that no weird leftovers happen from past item views
 
         final ArrayList<Item> items = ((GlobalApp) this.getApplication()).getInventory();
+
+        if(!knifeTaken || !matchesTaken || !candleTaken) {
+            for(int i = 0; i < items.size(); i++) {
+                if(items.get(i).getName().equals("Knife")) {
+                    knifeTaken = true;
+                }
+                if(items.get(i).getName().equals("Matches")) {
+                    matchesTaken = true;
+                }
+                if(items.get(i).getName().equals("Candle")) {
+                    candleTaken = true;
+                }
+            }
+        }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.inventoryButton);
 
@@ -98,12 +115,15 @@ public class Room1 extends AppCompatActivity {
                 Item curr = ((GlobalApp) getApplication()).getItem();
                 Item shelf = new Item("Shelf", 100, "", false, 0, R.mipmap.shelf, "A shelf. There's something on the top but it's too high to reach without a ladder.");
                 ((GlobalApp) getApplication()).setViewItem(shelf);
-                if (curr != null && curr.getName().equals("Ladder")) {
+                if (curr != null && curr.getName().equals("Ladder") && !matchesTaken) {
                     shelf.addAction(new Take(new Item("Matches", 5, "A box of matches", true, 0, R.mipmap.matches, "")));
                 }
                 startActivity(new Intent(Room1.this, ItemView.class));
             }});
         final ImageButton candleButton = (ImageButton) findViewById(R.id.Candle);
+        if(candleTaken) {
+            candleButton.setVisibility(View.GONE);
+        }
         candleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,14 +142,11 @@ public class Room1 extends AppCompatActivity {
                 Item curr = ((GlobalApp) getApplication()).getItem();
                 Item lockbox = new Item("Lockbox", 100, "A locked box", false, 0, R.mipmap.lockedbox, "A lockbox. What's inside?");
                 ((GlobalApp) getApplication()).setViewItem(lockbox);
-                if (curr != null && curr.getName().equals("Lockbox Key"))
+                if (curr != null && curr.getName().equals("Lockbox Key") && !knifeTaken)
                     lockbox.addAction(new Take(new Item("Knife", 7, "A well-sharpened knife", true, 0, R.mipmap.knife, ""))); //TODO Need to make sure this doesn't happen if they've already taken the knife
                 startActivity(new Intent(Room1.this, ItemView.class));
             }
         });
-
-
-
 
     }
 
@@ -138,11 +155,26 @@ public class Room1 extends AppCompatActivity {
         super.onRestart();
 
         //Do your code here
+        ArrayList<Item> check = ((GlobalApp) this.getApplication()).getInventory();
         Item item = ((GlobalApp) this.getApplication()).getItem();
         if(item == null) {
             currItem.setImageResource(R.mipmap.ic_launcher);
         } else {
             currItem.setImageResource(item.getPic());
+        }
+
+        if(!knifeTaken || !matchesTaken || !candleTaken) {
+            for(int i = 0; i < check.size(); i++) {
+                if(check.get(i).getName().equals("Knife")) {
+                    knifeTaken = true;
+                }
+                if(check.get(i).getName().equals("Matches")) {
+                    matchesTaken = true;
+                }
+                if(check.get(i).getName().equals("Candle")) {
+                    candleTaken = true;
+                }
+            }
         }
     }
 

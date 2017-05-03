@@ -24,6 +24,14 @@ public class Room2 extends AppCompatActivity {
 
         final ArrayList<Item> items = ((GlobalApp) this.getApplication()).getInventory();
 
+        if(!keyTaken) {
+            for(int i = 0; i < items.size(); i++) {
+                if(items.get(i).getName().equals("Exit Key")) {
+                    keyTaken = true;
+                }
+            }
+        }
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.inventoryButton2);
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -95,11 +103,19 @@ public class Room2 extends AppCompatActivity {
         super.onRestart();
 
         //Do your code here
+        ArrayList<Item> check = ((GlobalApp) this.getApplication()).getInventory();
         Item item = ((GlobalApp) this.getApplication()).getItem();
         if(item == null) {
             currItem2.setImageResource(R.mipmap.ic_launcher);
         } else {
             currItem2.setImageResource(item.getPic());
+        }
+        if(!keyTaken) {
+            for(int i = 0; i < check.size(); i++) {
+                if(check.get(i).getName().equals("Exit Key")) {
+                    keyTaken = true;
+                }
+            }
         }
     }
 }

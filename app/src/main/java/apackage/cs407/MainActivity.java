@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
         DBManager dbManager = new DBManager(this, null, null, 1);
         ((GlobalApp) getApplication()).setDB(dbManager);
         final ArrayList<Item> items = new ArrayList<>();
-        Item wrench = new Item("Wrench", 10, "This can be used to whack things or on bolts.", true, 50, R.mipmap.wrench2, "");
+        final Item wrench = new Item("Wrench", 10, "This can be used to whack things or on bolts.", true, 50, R.mipmap.wrench2, "");
         Item hammer = new Item("Hammer", 5, "This can also whack things, especially nails or zombies", true, 25, R.mipmap.hammer, "");
         Item soda = new Item("Soda", 1, "I'm thirsty", true, 100, R.mipmap.soda, "");
 
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) { //TODO The initial setup of inventory, etc. should be moved here? Maybe?
                 ((GlobalApp) getApplication()).setInventory(items);
+                ((GlobalApp) getApplication()).setItem(wrench);
 
                 startActivity(new Intent(MainActivity.this, Room1.class));
             }
