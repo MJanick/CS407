@@ -33,8 +33,7 @@ public class Room1 extends AppCompatActivity {
         setContentView(R.layout.activity_room1);
         ((GlobalApp) getApplication()).setViewItem(null); //TODO Make sure this is at the top of each activity so that no weird leftovers happen from past item views
 
-
-        final ArrayList<Item> items = new ArrayList<>();
+        final ArrayList<Item> items = ((GlobalApp) this.getApplication()).getInventory();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.inventoryButton);
 
@@ -49,32 +48,14 @@ public class Room1 extends AppCompatActivity {
 
         });
 
-        Item wrench = new Item("Wrench", 10, "This can be used to whack things or on bolts.", true, 50, R.mipmap.wrench2, "");
-        Item hammer = new Item("Hammer", 5, "This can also whack things, especially nails or zombies", true, 25, R.mipmap.hammer, "");
-        Item soda = new Item("Soda", 1, "I'm thirsty", true, 100, R.mipmap.soda, "");
-
-        items.add(wrench);
-        items.add(hammer);
-        items.add(soda); //TODO These might want to be moved to before the first room is loaded / on the reset
-
-        Item exitKey = new Item ("Exit Key", 1, "The key to exit the house!", true, 0, R.mipmap.key, "");
-        Item lockboxKey = new Item("Lockbox Key", 1, "The key to a small lockbox", true, 0, R.mipmap.key, "");
-        Item storeRoomKey = new Item("Storeroom Key", 1, "The key to a storeroom", true, 0, R.mipmap.key, "");
-
-
-        items.add(exitKey);
-        items.add(storeRoomKey);
-        items.add(lockboxKey);
-
-        //TODO DELETE ALL ITEMS AFTER THE SODA, THESE ARE HERE PURELY FOR TESTING AND MUST ACTUALLY BE OBTAINED IN OTHER ROOMS IN THE FINAL VERSION
-
-
         ((GlobalApp) this.getApplication()).setInventory(items);
 
         currItem = (FloatingActionButton) findViewById(R.id.currentItem);
         Item item = ((GlobalApp) this.getApplication()).getItem();
         if(item == null) {
             currItem.setImageResource(R.mipmap.ic_launcher);
+        } else {
+            currItem.setImageResource(item.getPic());
         }
 
 

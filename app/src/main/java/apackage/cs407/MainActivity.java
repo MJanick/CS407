@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -15,12 +17,31 @@ public class MainActivity extends AppCompatActivity {
 
         DBManager dbManager = new DBManager(this, null, null, 1);
         ((GlobalApp) getApplication()).setDB(dbManager);
+        final ArrayList<Item> items = new ArrayList<>();
+        Item wrench = new Item("Wrench", 10, "This can be used to whack things or on bolts.", true, 50, R.mipmap.wrench2, "");
+        Item hammer = new Item("Hammer", 5, "This can also whack things, especially nails or zombies", true, 25, R.mipmap.hammer, "");
+        Item soda = new Item("Soda", 1, "I'm thirsty", true, 100, R.mipmap.soda, "");
+
+        items.add(wrench);
+        items.add(hammer);
+        items.add(soda);
+
+        Item meat = new Item ("Meat", 1, "Some delicious meat", true, 0, R.mipmap.meat, "");
+        Item lockboxKey = new Item("Lockbox Key", 1, "The key to a small lockbox", true, 0, R.mipmap.key, "");
+        Item storeRoomKey = new Item("Storeroom Key", 1, "The key to a storeroom", true, 0, R.mipmap.key, "");
+
+
+        items.add(meat);
+        items.add(storeRoomKey);
+        items.add(lockboxKey);
 
         Button startButton = (Button)findViewById(R.id.startButton);
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { //TODO The initial setup of inventory, etc. should be moved here? Maybe?
+                ((GlobalApp) getApplication()).setInventory(items);
+
                 startActivity(new Intent(MainActivity.this, Room1.class));
             }
         });

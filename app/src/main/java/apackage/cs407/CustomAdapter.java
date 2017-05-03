@@ -27,18 +27,18 @@ class CustomAdapter extends ArrayAdapter<Item> {
         }
 
         String name = getItem(position).getName();
-        String uses = getItem(position).getNumUses() + "";
+        //String uses = getItem(position).getNumUses() + "";
         String descrip = getItem(position).getDescription();
         int pic = getItem(position).getPic();
 
 
         TextView nameText = (TextView) customView.findViewById(R.id.itemname);
-        TextView usesText = (TextView) customView.findViewById(R.id.remainUses);
+        //TextView usesText = (TextView) customView.findViewById(R.id.remainUses);
         TextView descripText = (TextView) customView.findViewById(R.id.actualDescription);
         ImageView currImage = (ImageView) customView.findViewById(R.id.inventoryImage);
 
         nameText.setText(name);
-        usesText.setText(uses);
+        //usesText.setText(uses);
         descripText.setText(descrip);
         currImage.setImageResource(pic);
         return customView;
