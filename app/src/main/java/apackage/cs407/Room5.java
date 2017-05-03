@@ -26,7 +26,7 @@ public class Room5 extends AppCompatActivity {
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(new MainActivity(), StartActivity.class));
+                startActivity(new Intent(Room5.this, MainActivity.class));
             }
         });
         ((GlobalApp) getApplication()).setViewItem(null);
@@ -41,7 +41,7 @@ public class Room5 extends AppCompatActivity {
             }
         }
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.inventoryButton2);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.inventoryButton5);
 
         fab.setOnClickListener(new View.OnClickListener() {
             @Override

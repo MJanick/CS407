@@ -26,13 +26,6 @@ public class MainActivity extends AppCompatActivity {
         items.add(hammer);
         items.add(soda);
 
-        Item meat = new Item ("Meat", 1, "Some delicious meat", true, 0, R.mipmap.meat, "");
-        Item lockboxKey = new Item("Lockbox Key", 1, "The key to a small lockbox", true, 0, R.mipmap.key, "");
-
-
-        items.add(meat);
-        items.add(lockboxKey);
-
         Button startButton = (Button)findViewById(R.id.startButton);
 
         startButton.setOnClickListener(new View.OnClickListener() {

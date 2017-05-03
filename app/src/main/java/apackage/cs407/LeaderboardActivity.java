@@ -39,7 +39,7 @@ public class LeaderboardActivity extends AppCompatActivity {
             }
         });
 
-        String text = "";
+        String text = "Attempt | User | Score\n\n";
 
         for(int i = 0; i < allScores.size(); i++) {
             text += allScores.get(i).get_id() + " | " + allScores.get(i).get_name() + " | " + allScores.get(i).get_score() + "\n";
@@ -47,8 +47,10 @@ public class LeaderboardActivity extends AppCompatActivity {
 
         TextView leaderboardText = (TextView) findViewById(R.id.leaderboardText);
         leaderboardText.setText(text);
+        leaderboardText.setTextSize(15);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setImageResource(R.mipmap.back);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

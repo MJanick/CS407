@@ -31,7 +31,7 @@ public class Room3 extends AppCompatActivity {
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(new MainActivity(), StartActivity.class));
+                startActivity(new Intent(Room3.this, MainActivity.class));
             }
         });
 
@@ -88,48 +88,55 @@ public class Room3 extends AppCompatActivity {
 
 
         final ImageButton case1Button = (ImageButton) findViewById(R.id.Case1);
-        if(fishTaken) {
-            case1Button.setVisibility(View.GONE);
-        }
         case1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Item curr = ((GlobalApp) getApplication()).getItem();
-                Item case1 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A glass case. If only you could break it open.");
+                Item case1;
+                if(!fishTaken) {
+                    case1 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A glass case. If only you could break it open.");
+                } else {
+                    case1 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A broken glass case.");
+                }
                 ((GlobalApp) getApplication()).setViewItem(case1);
-                if (curr != null && curr.getName().equals("Hammer")) {
+                if (curr != null && curr.getName().equals("Hammer") && !fishTaken) {
                     case1.addAction(new Take(new Item("Fish", 5, "Ugh. It's a bit smelly.", true, 0, R.mipmap.fish, "")));
                 }
                 startActivity(new Intent(Room3.this, ItemView.class));
             }});
 
         final ImageButton case2Button = (ImageButton) findViewById(R.id.Case2);
-        if(keyTaken) {
-            case2Button.setVisibility(View.GONE);
-        }
         case2Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Item curr = ((GlobalApp) getApplication()).getItem();
-                Item case2 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A glass case. If only you could break it open.");
+                Item case2;
+                if(!keyTaken) {
+                    case2 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A glass case. If only you could break it open.");
+                } else {
+                    case2 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A broken glass case.");
+                }
                 ((GlobalApp) getApplication()).setViewItem(case2);
-                if (curr != null && curr.getName().equals("Hammer")) {
+                if (curr != null && curr.getName().equals("Hammer") && !keyTaken) {
                     case2.addAction(new Take(new Item("Storeroom Key", 5, "The key to the storeroom", true, 0, R.mipmap.key, "")));
                 }
                 startActivity(new Intent(Room3.this, ItemView.class));
             }});
 
         final ImageButton case3Button = (ImageButton) findViewById(R.id.Case3);
-        if(magnetTaken) {
-            case3Button.setVisibility(View.GONE);
-        }
+
         case3Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Item curr = ((GlobalApp) getApplication()).getItem();
-                Item case3 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A glass case. If only you could break it open.");
+                Item case3;
+                if(!magnetTaken) {
+                    case3 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A glass case. If only you could break it open.");
+                } else {
+                    case3 = new Item("Case", 100, "", false, 0, R.mipmap.glasscase, "A broken glass case.");
+                }
                 ((GlobalApp) getApplication()).setViewItem(case3);
-                if (curr != null && curr.getName().equals("Hammer")) {
+                if (curr != null && curr.getName().equals("Hammer") && !magnetTaken) {
                     case3.addAction(new Take(new Item("Magnet", 5, "I sense a bit of attraction.", true, 0, R.mipmap.magnet, "")));
                 }
                 startActivity(new Intent(Room3.this, ItemView.class));

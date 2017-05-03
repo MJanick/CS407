@@ -113,7 +113,12 @@ public class Room1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Item curr = ((GlobalApp) getApplication()).getItem();
-                Item shelf = new Item("Shelf", 100, "", false, 0, R.mipmap.shelf, "A shelf. There's something on the top but it's too high to reach without a ladder.");
+                Item shelf;
+                if(!matchesTaken) {
+                    shelf = new Item("Shelf", 100, "", false, 0, R.mipmap.shelf, "A shelf. There's something on the top but it's too high to reach without a ladder.");
+                } else {
+                    shelf = new Item("Shelf", 100, "", false, 0, R.mipmap.shelf, "There was nothing left up there");
+                }
                 ((GlobalApp) getApplication()).setViewItem(shelf);
                 if (curr != null && curr.getName().equals("Ladder") && !matchesTaken) {
                     shelf.addAction(new Take(new Item("Matches", 5, "A box of matches", true, 0, R.mipmap.matches, "")));
@@ -140,7 +145,12 @@ public class Room1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Item curr = ((GlobalApp) getApplication()).getItem();
-                Item lockbox = new Item("Lockbox", 100, "A locked box", false, 0, R.mipmap.lockedbox, "A lockbox. What's inside?");
+                Item lockbox;
+                if(!knifeTaken) {
+                    lockbox = new Item("Lockbox", 100, "A locked box", false, 0, R.mipmap.lockedbox, "A lockbox. What's inside?");
+                } else {
+                    lockbox = new Item("Lockbox", 100, "A locked box", false, 0, R.mipmap.lockedbox, "A lockbox. You've already taken the knife.");
+                }
                 ((GlobalApp) getApplication()).setViewItem(lockbox);
                 if (curr != null && curr.getName().equals("Lockbox Key") && !knifeTaken)
                     lockbox.addAction(new Take(new Item("Knife", 7, "A well-sharpened knife", true, 0, R.mipmap.knife, ""))); //TODO Need to make sure this doesn't happen if they've already taken the knife

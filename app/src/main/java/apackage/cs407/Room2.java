@@ -101,6 +101,11 @@ public class Room2 extends AppCompatActivity {
             public void onClick(View v) {
                 Item curr = ((GlobalApp) getApplication()).getItem();
                 Item guarddog = new Item("Guard Dog", 100, "", false, 0, R.mipmap.dog, "This dog is guarding something. He looks hungry");
+                if(!keyTaken) {
+                    guarddog = new Item("Guard Dog", 100, "", false, 0, R.mipmap.dog, "This dog is guarding something. He looks hungry.");
+                } else {
+                    guarddog = new Item("Guard Dog", 100, "", false, 0, R.mipmap.dog, "He's so preoccupied with the meat he doesn't notice you took the key.");
+                }
                 ((GlobalApp) getApplication()).setViewItem(guarddog);
                 if (curr != null && curr.getName().equals("Meat") && !keyTaken) {
                     guarddog.addAction(new Take(new Item("Exit Key", 7, "This can be used to escape", true, 0, R.mipmap.key, "This can be used to escape")));
