@@ -20,6 +20,15 @@ public class Room2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_room2);
+
+        Button resetButton = (Button)findViewById(R.id.reset);
+
+        resetButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(new MainActivity(), StartActivity.class));
+            }
+        });
         ((GlobalApp) getApplication()).setViewItem(null);
 
         final ArrayList<Item> items = ((GlobalApp) this.getApplication()).getInventory();
