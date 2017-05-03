@@ -6,6 +6,30 @@
     android:layout_height="match_parent"
     tools:context="apackage.cs407.Room5">
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/inventoryButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:src="@mipmap/backpack"
+        android:layout_marginRight="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_below="@+id/currentItem5"
+        android:layout_alignRight="@+id/Return"
+        android:layout_alignEnd="@+id/Return"
+        android:layout_marginTop="21dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/currentItem5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="36dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_below="@+id/Ladder"
+        android:layout_alignLeft="@+id/inventoryButton2"
+        android:layout_alignStart="@+id/inventoryButton2" />
+
     <ImageButton
         android:id="@+id/Ladder"
         android:layout_width="wrap_content"

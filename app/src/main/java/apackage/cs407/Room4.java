@@ -1,6 +1,7 @@
 package apackage.cs407;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,8 +10,13 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class Room4 extends AppCompatActivity {
+
+    private FloatingActionButton currItem4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +32,39 @@ public class Room4 extends AppCompatActivity {
             }
         });
         ((GlobalApp) getApplication()).setViewItem(null);
+
+        final ArrayList<Item> items = ((GlobalApp) this.getApplication()).getInventory();
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.inventoryButton4);
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ((GlobalApp) getApplication()).setInventory(items);
+
+                startActivity(new Intent(Room4.this, Inventory.class));
+            }
+
+
+        });
+
+        currItem4 = (FloatingActionButton) findViewById(R.id.currentItem4);
+        Item item = ((GlobalApp) this.getApplication()).getItem();
+        if(item == null) {
+            currItem4.setImageResource(R.mipmap.ic_launcher);
+        } else {
+            currItem4.setImageResource(item.getPic());
+        }
+
+        currItem4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Item curr = ((GlobalApp) getApplication()).getItem();
+                if(curr != null) {
+                    Toast.makeText(Room4.this, curr.getName(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
         Button Return = (Button) findViewById(R.id.Return);
         Return.setOnClickListener(new View.OnClickListener() {
@@ -55,5 +94,18 @@ public class Room4 extends AppCompatActivity {
                 startActivity(new Intent(Room4.this, ItemView.class));
 
             }});
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        //Do your code here
+        Item item = ((GlobalApp) this.getApplication()).getItem();
+        if(item == null) {
+            currItem4.setImageResource(R.mipmap.ic_launcher);
+        } else {
+            currItem4.setImageResource(item.getPic());
+        }
     }
 }

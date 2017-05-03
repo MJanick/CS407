@@ -114,9 +114,9 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Item curr = ((GlobalApp) getApplication()).getItem();
-                Item door = new Item("Door", 100, "", false, 0, R.mipmap.ic_launcher, "A locked door to another room.");
+                Item door = new Item("Door", 100, "", false, 0, R.mipmap.ic_launcher, "A locked Door to another room.");
                 door.addAction(new Enter((curr != null && curr.getName().equals("Key")), new Intent(StartActivity.this, LeaderboardActivity.class)));
-                if (curr != null && curr.getName().equals("Wrench")) door.addAction(new TextOnly("Smack door with wrench", "Didn't do anything."));
+                if (curr != null && curr.getName().equals("Wrench")) door.addAction(new TextOnly("Smack Door with wrench", "Didn't do anything."));
                 ((GlobalApp) getApplication()).setViewItem(door);
 
                 startActivity(new Intent(StartActivity.this, ItemView.class));
@@ -127,7 +127,7 @@ public class StartActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    Item key = new Item("Key", 100, "A key to some door", true, 0, R.mipmap.ic_launcher, "This is a key, despite appearances.");
+                    Item key = new Item("Key", 100, "A key to some Door", true, 0, R.mipmap.ic_launcher, "This is a key, despite appearances.");
                     ((GlobalApp) getApplication()).setViewItem(key);
                     key.addAction(new Take(sampleKeyButton));
 

@@ -59,7 +59,7 @@
         android:layout_marginLeft="70dp"
         android:src="@mipmap/ic_launcher"
         app:layout_anchor="@+id/container" />
-        <!--TODO As the name implies, this will be replaced with an image of a door and
+        <!--TODO As the name implies, this will be replaced with an image of a Door and
         adjusted as needed -->
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/sampleKey"
