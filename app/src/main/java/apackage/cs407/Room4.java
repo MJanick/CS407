@@ -37,6 +37,9 @@ public class Room4 extends AppCompatActivity {
 
         final ArrayList<Item> items = ((GlobalApp) this.getApplication()).getInventory();
 
+        setTitle("Room 4");
+
+
         if(!meatTaken || !keyTaken) {
             for(int i = 0; i < items.size(); i++) {
                 if(items.get(i).getName().equals("Meat")) {

@@ -20,7 +20,6 @@
             android:name=".LeaderboardActivity"
             android:label="@string/title_activity_leaderboard"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Options" />
         <activity
             android:name=".StartActivity"
             android:label="@string/title_activity_start"
@@ -32,7 +31,11 @@
         <activity android:name=".Room2" />
         <activity android:name=".Room3" />
         <activity android:name=".Room4" />
-        <activity android:name=".Room5"></activity>
+        <activity android:name=".Room5" />
+        <activity
+            android:name=".Instructions"
+            android:label="@string/title_activity_instructions"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

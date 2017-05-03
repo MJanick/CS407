@@ -50,4 +50,8 @@ public class GlobalApp extends Application {
     public static void setNumActions(int num) {
         numActions = numActions + num;
     }
+
+    public static void resetNumActions() {
+        numActions = 0;
+    }
 }

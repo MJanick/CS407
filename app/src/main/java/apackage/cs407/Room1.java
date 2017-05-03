@@ -38,6 +38,8 @@ public class Room1 extends AppCompatActivity {
 
         final ArrayList<Item> items = ((GlobalApp) this.getApplication()).getInventory();
 
+        setTitle("Room 1");
+
         if(!knifeTaken || !matchesTaken || !candleTaken) {
             for(int i = 0; i < items.size(); i++) {
                 if(items.get(i).getName().equals("Knife")) {

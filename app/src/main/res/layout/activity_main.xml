@@ -17,16 +17,13 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Options"
-        android:visibility="invisible"/> <!--TODO Making invisible until we have a use for it-->
+        android:text="Instructions" />
 
     <Button
         android:id="@+id/startButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/optionsButton"
-        android:layout_alignLeft="@+id/optionsButton"
-        android:layout_alignStart="@+id/optionsButton"
         android:layout_marginBottom="32dp"
         android:layout_centerHorizontal="true"
         android:text="Start" />

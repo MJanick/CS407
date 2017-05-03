@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setTitle("House Escape");
+
         DBManager dbManager = new DBManager(this, null, null, 1);
         ((GlobalApp) getApplication()).setDB(dbManager);
         final ArrayList<Item> items = new ArrayList<>();
@@ -33,20 +35,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 ((GlobalApp) getApplication()).setInventory(items);
                 ((GlobalApp) getApplication()).setItem(wrench);
-                ((GlobalApp) getApplication()).setNumActions(0);
+                ((GlobalApp) getApplication()).resetNumActions();
 
                 startActivity(new Intent(MainActivity.this, Room1.class));
             }
         });
 
-        //Button optionsButton = (Button)findViewById(R.id.optionsButton);
+        Button optionsButton = (Button)findViewById(R.id.optionsButton);
 
-        /*optionsButton.setOnClickListener(new View.OnClickListener() {
+        optionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, Room1.class));
+                startActivity(new Intent(MainActivity.this, Instructions.class));
             }
-        });*/
+        });
 
         Button leaderboardButton = (Button)findViewById(R.id.leaderboardButton);
 

@@ -39,6 +39,9 @@ public class Room3 extends AppCompatActivity {
 
         final ArrayList<Item> items = ((GlobalApp) this.getApplication()).getInventory();
 
+        setTitle("Room 3");
+
+
         if(!fishTaken || !keyTaken || !magnetTaken) {
             for(int i = 0; i < items.size(); i++) {
                 if(items.get(i).getName().equals("Fish")) {

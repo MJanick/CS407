@@ -39,6 +39,7 @@ public class LeaderboardActivity extends AppCompatActivity {
             }
         });
 
+        setTitle("Leaderboard");
         String text = "Attempt | User | Score\n\n";
 
         for(int i = 0; i < allScores.size(); i++) {
@@ -47,7 +48,6 @@ public class LeaderboardActivity extends AppCompatActivity {
 
         TextView leaderboardText = (TextView) findViewById(R.id.leaderboardText);
         leaderboardText.setText(text);
-        leaderboardText.setTextSize(15);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setImageResource(R.mipmap.back);
