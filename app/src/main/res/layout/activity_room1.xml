@@ -14,12 +14,70 @@
         android:background="#3344DD"
         android:visibility="invisible"/>
 
+    <View
+        android:id="@+id/inventoryHelper"
+        android:layout_width="250dp"
+        android:layout_height="400dp"
+        android:background="#3344DD"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+
+    <View
+        android:id="@+id/currentItemHelper"
+        android:layout_width="250dp"
+        android:layout_height="275dp"
+        android:background="#3344DD"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+
+    <View
+        android:id="@+id/exitHelper"
+        android:layout_width="75dp"
+        android:layout_height="250dp"
+        android:background="#3344DD"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+
+    <View
+        android:id="@+id/door2Helper"
+        android:layout_width="75dp"
+        android:layout_height="250dp"
+        android:background="#3344DD"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+
+    <View
+        android:id="@+id/candleHelper"
+        android:layout_width="160dp"
+        android:layout_height="175dp"
+        android:background="#3344DD"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+
+    <View
+        android:id="@+id/shelfHelper"
+        android:layout_width="45dp"
+        android:layout_height="275dp"
+        android:background="#3344DD"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+
+    <View
+        android:id="@+id/lockboxHelper"
+        android:layout_width="20dp"
+        android:layout_height="285dp"
+        android:background="#3344DD"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/inventoryButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_marginLeft="280dp"
+        android:layout_below="@id/inventoryHelper"
+        android:layout_toEndOf="@id/inventoryHelper"
+        android:layout_toRightOf="@id/inventoryHelper"
         android:src="@mipmap/backpack" />
 
     <android.support.design.widget.FloatingActionButton
@@ -27,46 +85,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
-        android:layout_margin="90dp"
+        android:layout_below="@id/currentItemHelper"
+        android:layout_toEndOf="@id/currentItemHelper"
+        android:layout_toRightOf="@id/currentItemHelper"
         android:src="@mipmap/ic_launcher" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/midpoint"
-        android:layout_toEndOf="@id/midpoint"
-        android:layout_toRightOf="@id/midpoint"
-        android:layout_marginLeft="10dp"
-        android:text="Button1"
-        android:visibility="invisible"/>
-
-    <View
-        android:id="@+id/helper"
-        android:layout_alignStart="@id/button"
-        android:layout_width="45dp"
-        android:layout_height="10dp"
-        android:background="#3344DD"
-        android:layout_alignLeft="@id/button"
-        android:layout_below="@id/button"/>
 
     <ImageButton
         android:id="@+id/Exit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="200dp"
         app:srcCompat="@mipmap/door"
-        android:layout_above="@+id/button"
-        android:layout_alignLeft="@+id/Door2"
-        android:layout_alignStart="@+id/Door2" />
+        android:layout_toRightOf="@id/exitHelper"
+        android:layout_toEndOf="@id/exitHelper"
+        android:layout_alignTop="@id/exitHelper"
+        android:scaleType="fitXY"
+        android:padding="0dp"/>
 
     <ImageButton
         android:id="@+id/Door2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="200dp"
         app:srcCompat="@mipmap/door"
-        android:layout_above="@+id/helper"
-        android:layout_alignLeft="@+id/Candle"
-        android:layout_alignStart="@+id/Candle"/>
+        android:layout_toLeftOf="@id/door2Helper"
+        android:layout_alignTop="@id/door2Helper"
+        android:scaleType="fitXY"
+        android:padding="0dp"/>
     <Button
         android:id="@+id/reset"
         android:layout_width="wrap_content"
@@ -78,32 +121,33 @@
 
     <ImageButton
         android:id="@+id/Shelf"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:srcCompat="@mipmap/shelf"
-        android:layout_alignTop="@+id/Exit"
-        android:layout_alignLeft="@+id/midpoint"
-        android:layout_alignStart="@+id/midpoint" />
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="fitXY"
+        android:padding="0dp" />
 
     <ImageButton
         android:id="@+id/Candle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:srcCompat="@mipmap/candle"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_toLeftOf="@id/candleHelper"
+        android:layout_below="@id/candleHelper"
+        android:scaleType="fitXY"
+        android:padding="0dp"/>
 
     <ImageButton
         android:id="@+id/Box"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         app:srcCompat="@mipmap/lockedbox"
-        android:layout_alignBottom="@+id/Candle"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="21dp"
-        android:layout_marginEnd="21dp" />
+        android:layout_below="@id/lockboxHelper"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitXY"
+        android:padding="0dp" />
 
 
 </RelativeLayout>

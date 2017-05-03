@@ -58,7 +58,7 @@ class Enter extends Action {
 
     public void executeAction(Context context) {
         if (unlocked) context.startActivity(this.destination);
-        else Toast.makeText(context, "The door is locked.", Toast.LENGTH_LONG).show();
+        else Toast.makeText(context, "Cannot enter with current held item.", Toast.LENGTH_LONG).show();
     }
 }
 
