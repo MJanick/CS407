@@ -153,7 +153,7 @@ public class Room1 extends AppCompatActivity {
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(new MainActivity(), StartActivity.class));
+                startActivity(new Intent(Room1.this, MainActivity.class));
             }
         });
 

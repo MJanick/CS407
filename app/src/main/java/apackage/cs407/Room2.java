@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -26,7 +27,7 @@ public class Room2 extends AppCompatActivity {
         resetButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(new MainActivity(), StartActivity.class));
+                startActivity(new Intent(Room2.this, MainActivity.class));
             }
         });
         ((GlobalApp) getApplication()).setViewItem(null);
@@ -61,6 +62,16 @@ public class Room2 extends AppCompatActivity {
         } else {
             currItem2.setImageResource(item.getPic());
         }
+
+        currItem2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Item curr = ((GlobalApp) getApplication()).getItem();
+                if(curr != null) {
+                    Toast.makeText(Room2.this, curr.getName(), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
 
         ImageButton Door3 = (ImageButton) findViewById(R.id.Door3);
         Door3.setOnClickListener(new View.OnClickListener() {
